@@ -1,0 +1,809 @@
+/* General Styles & Reset */
+:root {
+    --primary-color: #4CAF50; /* Green */
+    --secondary-color: #21D4FD; /* Light Blue */
+    --accent-color: #FFC107; /* Amber */
+    --text-color: #333;
+    --background-color: #f4f7f6;
+    --card-background: #ffffff;
+    --border-color: #e0e0e0;
+    --shadow-light: 0 2px 4px rgba(0, 0, 0, 0.05);
+    --shadow-medium: 0 4px 8px rgba(0, 0, 0, 0.1);
+    --success-color: #4CAF50;
+    --error-color: #F44336;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    -webkit-tap-highlight-color: transparent; /* Remove tap highlight on mobile */
+}
+
+#app-container {
+    display: flex;
+    height: 100vh;
+    overflow: hidden; /* Prevent body scroll when side menu is active */
+}
+
+/* Side Menu */
+#side-menu {
+    width: 280px;
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    box-shadow: var(--shadow-medium);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-out;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+}
+
+#side-menu.active {
+    transform: translateX(0);
+}
+
+#side-menu .menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#side-menu .menu-header h2 {
+    color: var(--primary-color);
+    font-size: 1.8em;
+    margin: 0;
+}
+
+#side-menu .menu-toggle {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.5em;
+    cursor: pointer;
+    padding: 5px;
+}
+
+#side-menu nav ul {
+    list-style: none;
+    flex-grow: 1;
+}
+
+#side-menu nav li {
+    margin-bottom: 15px;
+}
+
+#side-menu nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+    font-size: 1.1em;
+}
+
+#side-menu nav a i {
+    margin-right: 15px;
+    font-size: 1.2em;
+    color: var(--secondary-color);
+}
+
+#side-menu nav a:hover,
+#side-menu nav a.active {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Main Content Area */
+#app-content {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding-top: 60px; /* Space for fixed header */
+    width: 100%; /* Ensure it takes full width initially */
+}
+
+/* Header */
+header {
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    box-shadow: var(--shadow-medium);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+}
+
+header h1 {
+    font-size: 1.5em;
+    margin: 0;
+    flex-grow: 1; /* Pushes toggle button to left */
+    text-align: center; /* Center the title */
+    margin-right: 50px; /* Space for toggle button */
+}
+
+header .menu-toggle {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.8em;
+    cursor: pointer;
+    padding: 0;
+    margin-right: 15px;
+}
+
+/* Page Management */
+.page {
+    display: none;
+    padding: 20px;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.page.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.page-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.page-header h2 {
+    flex-grow: 1;
+    font-size: 1.6em;
+    margin: 0;
+    color: var(--primary-color);
+}
+
+.back-button {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 1.4em;
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 50%;
+    margin-right: 15px;
+    transition: background-color 0.2s ease;
+}
+
+.back-button:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Home Page */
+#home-page .hero-section {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: #fff;
+    padding: 40px 20px;
+    text-align: center;
+    border-radius: 12px;
+    margin-bottom: 30px;
+    box-shadow: var(--shadow-medium);
+}
+
+#home-page .hero-section h2 {
+    font-size: 2.2em;
+    margin-bottom: 10px;
+}
+
+#home-page .hero-section p {
+    font-size: 1.1em;
+    opacity: 0.9;
+}
+
+.quick-access-grid,
+.product-categories-grid,
+.product-categories-home-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.quick-access-card,
+.category-card {
+    background-color: var(--card-background);
+    border-radius: 12px;
+    padding: 25px 20px;
+    text-align: center;
+    box-shadow: var(--shadow-light);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+}
+
+.quick-access-card:hover,
+.category-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-medium);
+}
+
+.quick-access-card i,
+.category-card i {
+    font-size: 3em;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.quick-access-card h3,
+.category-card h3 {
+    font-size: 1.3em;
+    margin-bottom: 5px;
+    color: var(--text-color);
+}
+
+.quick-access-card p {
+    font-size: 0.9em;
+    color: #666;
+}
+
+.home-categories h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: var(--primary-color);
+    font-size: 1.8em;
+}
+
+
+/* Notes Page */
+.note-input-section {
+    background-color: var(--card-background);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 30px;
+    box-shadow: var(--shadow-light);
+    display: flex;
+    flex-direction: column;
+}
+
+.note-input-section textarea {
+    width: 100%;
+    min-height: 100px;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1em;
+    margin-bottom: 15px;
+    resize: vertical;
+    outline: none;
+    font-family: inherit;
+}
+
+.note-input-section textarea:focus {
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 3px rgba(33, 212, 253, 0.2);
+}
+
+.note-input-section button {
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.note-input-section button:hover {
+    background-color: #388E3C; /* Darker green */
+    transform: translateY(-2px);
+}
+
+.note-input-section button i {
+    font-size: 1.2em;
+}
+
+.notes-list-section h3 {
+    font-size: 1.4em;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 8px;
+}
+
+.notes-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.note-item {
+    background-color: var(--card-background);
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: var(--shadow-light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.2s ease;
+}
+
+.note-item.pinned {
+    border-left: 5px solid var(--secondary-color);
+    background-color: #e3f2fd; /* Lighter blue for pinned */
+}
+
+.note-item .note-content {
+    flex-grow: 1;
+    margin-right: 15px;
+    font-size: 1em;
+    color: var(--text-color);
+}
+
+.note-item .note-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.note-item .note-actions button {
+    background: none;
+    border: none;
+    font-size: 1.1em;
+    cursor: pointer;
+    color: #666;
+    transition: color 0.2s ease, transform 0.1s ease;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.note-item .note-actions button:hover {
+    color: var(--primary-color);
+    transform: scale(1.1);
+}
+
+.note-item .note-actions .pin-button .pinned {
+    color: var(--secondary-color); /* Color for pinned icon */
+}
+
+.empty-message {
+    text-align: center;
+    color: #999;
+    font-style: italic;
+    padding: 20px;
+    background-color: var(--card-background);
+    border-radius: 10px;
+    box-shadow: var(--shadow-light);
+}
+
+/* Finance Page */
+.finance-summary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.finance-summary .summary-card {
+    background-color: var(--card-background);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: var(--shadow-light);
+}
+
+.finance-summary .summary-card h3 {
+    font-size: 1.1em;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.finance-summary .summary-card p {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.finance-summary .summary-card.income-card p {
+    color: var(--success-color);
+}
+
+.finance-summary .summary-card.expense-card p {
+    color: var(--error-color);
+}
+
+.finance-summary .summary-card.balance-card p {
+    color: var(--secondary-color);
+}
+
+.transaction-input-section {
+    background-color: var(--card-background);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 30px;
+    box-shadow: var(--shadow-light);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.transaction-input-section input[type="text"],
+.transaction-input-section input[type="number"],
+.transaction-input-section select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1em;
+    outline: none;
+    font-family: inherit;
+}
+
+.transaction-input-section input:focus,
+.transaction-input-section select:focus {
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 3px rgba(33, 212, 253, 0.2);
+}
+
+.transaction-input-section button {
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.transaction-input-section button:hover {
+    background-color: #388E3C;
+    transform: translateY(-2px);
+}
+
+.transaction-input-section button i {
+    font-size: 1.2em;
+}
+
+.transaction-list-section h3 {
+    font-size: 1.4em;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 8px;
+}
+
+#transaction-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.transaction-item {
+    background-color: var(--card-background);
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: var(--shadow-light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1em;
+}
+
+.transaction-item.expense {
+    border-left: 5px solid var(--error-color);
+}
+
+.transaction-item.income {
+    border-left: 5px solid var(--success-color);
+}
+
+.transaction-item .transaction-details h4 {
+    margin: 0;
+    font-size: 1.1em;
+    color: var(--text-color);
+}
+
+.transaction-item .transaction-details p {
+    font-size: 0.85em;
+    color: #999;
+}
+
+.transaction-item .transaction-amount-display {
+    font-weight: bold;
+    margin-left: auto; /* Pushes amount to the right */
+    margin-right: 10px; /* Space before delete button */
+}
+
+/* Products Pages */
+#products-page .page-header h2,
+#product-list-page .page-header h2 {
+    text-align: center;
+    flex-grow: 1; /* Ensure title stays centered if back button is present */
+}
+
+.product-item {
+    background-color: var(--card-background);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: var(--shadow-light);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+}
+
+.product-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-medium);
+}
+
+.product-item h3 {
+    font-size: 1.3em;
+    color: var(--primary-color);
+    margin-bottom: 8px;
+}
+
+.product-item p {
+    font-size: 0.95em;
+    color: #666;
+}
+
+/* Product Detail Page */
+.product-detail-content {
+    background-color: var(--card-background);
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: var(--shadow-medium);
+    margin-bottom: 30px;
+}
+
+.product-detail-content h2 {
+    font-size: 2em;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.product-detail-content h3 {
+    font-size: 1.4em;
+    color: var(--secondary-color);
+    margin-top: 25px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 5px;
+}
+
+.product-detail-content p {
+    margin-bottom: 10px;
+    font-size: 1em;
+    line-height: 1.8;
+}
+
+.product-detail-content ul {
+    list-style: none;
+    padding-left: 20px;
+    margin-bottom: 15px;
+}
+
+.product-detail-content ul li {
+    margin-bottom: 8px;
+    position: relative;
+}
+
+.product-detail-content ul li::before {
+    content: '•';
+    color: var(--primary-color);
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+}
+
+.product-detail-content .product-detail-link {
+    display: inline-block;
+    background-color: var(--secondary-color);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    margin-top: 20px;
+    font-weight: bold;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.product-detail-content .product-detail-link:hover {
+    background-color: #1aadc2; /* Darker secondary */
+    transform: translateY(-2px);
+}
+
+/* About Page */
+.about-content {
+    background-color: var(--card-background);
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: var(--shadow-medium);
+}
+
+.about-content p {
+    margin-bottom: 15px;
+    font-size: 1em;
+    line-height: 1.7;
+}
+
+.about-content ul {
+    list-style: none;
+    margin-bottom: 20px;
+    padding-left: 0;
+}
+
+.about-content ul li {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: flex-start;
+    font-size: 1em;
+}
+
+.about-content ul li i {
+    color: var(--primary-color);
+    margin-right: 15px;
+    font-size: 1.3em;
+    line-height: 1.6; /* Align icon with text */
+}
+
+.about-content .app-version,
+.about-content .developed-by {
+    text-align: center;
+    font-size: 0.9em;
+    color: #999;
+    margin-top: 15px;
+}
+
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    #side-menu {
+        width: 250px;
+        padding: 15px;
+    }
+
+    #app-content {
+        padding-top: 55px; /* Adjust for smaller header */
+    }
+
+    header {
+        padding: 12px 15px;
+    }
+
+    header h1 {
+        font-size: 1.3em;
+        margin-right: 40px;
+    }
+
+    header .menu-toggle {
+        font-size: 1.6em;
+    }
+
+    .page {
+        padding: 15px;
+    }
+
+    .page-header h2 {
+        font-size: 1.4em;
+    }
+
+    .hero-section {
+        padding: 30px 15px;
+    }
+
+    .hero-section h2 {
+        font-size: 1.8em;
+    }
+
+    .quick-access-grid,
+    .product-categories-grid,
+    .product-categories-home-grid {
+        grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+        gap: 15px;
+    }
+
+    .quick-access-card,
+    .category-card {
+        padding: 20px 15px;
+    }
+
+    .quick-access-card i,
+    .category-card i {
+        font-size: 2.5em;
+    }
+
+    .quick-access-card h3,
+    .category-card h3 {
+        font-size: 1.1em;
+    }
+
+    .finance-summary {
+        grid-template-columns: 1fr; /* Stack cards on small screens */
+    }
+
+    .note-input-section button,
+    .transaction-input-section button {
+        font-size: 1em;
+        padding: 10px 15px;
+    }
+
+    .product-item h3 {
+        font-size: 1.1em;
+    }
+
+    .product-detail-content h2 {
+        font-size: 1.6em;
+    }
+
+    .product-detail-content h3 {
+        font-size: 1.2em;
+    }
+}
+
+/* Overlay for when side menu is active */
+#app-container::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 900;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-out, visibility 0.3s ease-out;
+}
+
+#side-menu.active + #app-content::before {
+    opacity: 1;
+    visibility: visible;
+}
+/* This above rule is problematic. The overlay should be on app-container, not app-content.
+   Corrected: Let's use a simpler overlay setup if needed, or rely on side menu covering content.
+   For simplicity, I'm removing the explicit overlay ::before on #app-content and relying on fixed positioning.
+   If a dimmed background is absolutely necessary for the overlay, it's better handled dynamically with JS
+   or a single overlay div that gets a class when menu is active.
+*/
+
+/* Corrected approach for overlay (optional, if you want a true dimming effect) */
+/* You would need to add/remove a class like 'menu-open' to #app-container in JS
+   when the side menu is toggled. */
+/*
+#app-container.menu-open #app-content {
+    filter: blur(2px); // Example blur effect
+    pointer-events: none; // Prevent interaction with main content
+}
+*/
