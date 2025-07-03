@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>EcoSense - Aplikasi Gaya Hidup Berkelanjutan</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#4CAF50">
+    <link rel="apple-touch-icon" href="icons/icon-192x192.png">
+    <link rel="icon" href="icons/icon-192x192.png" type="image/png">
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <div id="app-container">
+        <aside id="side-menu">
+            <div class="menu-header">
+                <h2>EcoSense</h2>
+                <button id="close-menu" class="menu-toggle"><i class="fas fa-times"></i></button>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#" data-page="home"><i class="fas fa-home"></i> Beranda</a></li>
+                    <li><a href="#" data-page="notes"><i class="fas fa-sticky-note"></i> Catatan & Pengingat</a></li>
+                    <li><a href="#" data-page="finance"><i class="fas fa-wallet"></i> Keuangan Berkelanjutan</a></li>
+                    <li><a href="#" data-page="products"><i class="fas fa-leaf"></i> Saran Produk Go Green</a></li>
+                    <li><a href="#" data-page="about"><i class="fas fa-info-circle"></i> Tentang Aplikasi</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main id="app-content">
+            <header>
+                <button id="menu-toggle" class="menu-toggle"><i class="fas fa-bars"></i></button>
+                <h1>EcoSense</h1>
+            </header>
+
+            <section id="home-page" class="page active">
+                <div class="hero-section">
+                    <h2>Mulai Gaya Hidup Hijau Anda!</h2>
+                    <p>EcoSense membantu Anda melacak, belajar, dan berkontribusi pada keberlanjutan setiap hari.</p>
+                </div>
+                <div class="quick-access-grid">
+                    <div class="quick-access-card" data-page="notes">
+                        <i class="fas fa-sticky-note"></i>
+                        <h3>Catatan</h3>
+                        <p>Ide & Pengingat</p>
+                    </div>
+                    <div class="quick-access-card" data-page="finance">
+                        <i class="fas fa-wallet"></i>
+                        <h3>Keuangan</h3>
+                        <p>Catat Pengeluaran Hijau</p>
+                    </div>
+                    <div class="quick-access-card" data-page="products">
+                        <i class="fas fa-leaf"></i>
+                        <h3>Produk</h3>
+                        <p>Saran Go Green</p>
+                    </div>
+                </div>
+
+                 <section class="home-categories">
+                    <h2>Jelajahi Produk Go Green</h2>
+                    <div class="product-categories-home-grid">
+                        <div class="category-card" data-category="Dapur">
+                            <i class="fas fa-utensils"></i>
+                            <h3>Dapur</h3>
+                        </div>
+                        <div class="category-card" data-category="Perawatan Diri">
+                            <i class="fas fa-spa"></i>
+                            <h3>Perawatan Diri</h3>
+                        </div>
+                        <div class="category-card" data-category="Pakaian">
+                            <i class="fas fa-tshirt"></i>
+                            <h3>Pakaian</h3>
+                        </div>
+                        <div class="category-card" data-category="Kemasan">
+                            <i class="fas fa-box"></i>
+                            <h3>Kemasan</h3>
+                        </div>
+                        <div class="category-card" data-category="Pertanian & Kebun">
+                            <i class="fas fa-seedling"></i>
+                            <h3>Pertanian & Kebun</h3>
+                        </div>
+                    </div>
+                </section>
+            </section>
+
+            <section id="notes-page" class="page">
+                <div class="page-header">
+                    <button class="back-button" data-target="home"><i class="fas fa-arrow-left"></i></button>
+                    <h2>Catatan & Pengingat</h2>
+                </div>
+                <div class="note-input-section">
+                    <textarea id="note-text" placeholder="Tulis catatan atau pengingat baru..."></textarea>
+                    <button id="add-note-button"><i class="fas fa-plus-circle"></i> Tambah Catatan</button>
+                </div>
+
+                <div class="notes-list-section">
+                    <h3>Catatan Disematkan</h3>
+                    <div id="pinned-notes-container" class="notes-container">
+                        <p id="empty-pinned-notes-message" class="empty-message">Belum ada catatan yang disematkan.</p>
+                    </div>
+
+                    <h3>Catatan Lainnya</h3>
+                    <div id="other-notes-container" class="notes-container">
+                        <p id="empty-other-notes-message" class="empty-message">Belum ada catatan lainnya.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="finance-page" class="page">
+                <div class="page-header">
+                    <button class="back-button" data-target="home"><i class="fas fa-arrow-left"></i></button>
+                    <h2>Keuangan Berkelanjutan</h2>
+                </div>
+                <div class="finance-summary">
+                    <div class="summary-card income-card">
+                        <h3>Total Pemasukan</h3>
+                        <p id="total-income">Rp 0</p>
+                    </div>
+                    <div class="summary-card expense-card">
+                        <h3>Total Pengeluaran</h3>
+                        <p id="total-expense">Rp 0</p>
+                    </div>
+                    <div class="summary-card balance-card">
+                        <h3>Saldo Saat Ini</h3>
+                        <p id="current-balance">Rp 0</p>
+                    </div>
+                </div>
+
+                <div class="transaction-input-section">
+                    <h3>Tambah Transaksi Baru</h3>
+                    <input type="text" id="transaction-description" placeholder="Deskripsi (ex: Beli Sabun Organik)">
+                    <input type="number" id="transaction-amount" placeholder="Jumlah (ex: 50000)">
+                    <select id="transaction-type">
+                        <option value="income">Pemasukan</option>
+                        <option value="expense">Pengeluaran</option>
+                    </select>
+                    <button id="add-transaction-button"><i class="fas fa-plus-circle"></i> Tambah Transaksi</button>
+                </div>
+
+                <div class="transaction-list-section">
+                    <h3>Riwayat Transaksi</h3>
+                    <ul id="transaction-list">
+                        </ul>
+                </div>
+            </section>
+
+            <section id="products-page" class="page">
+                <div class="page-header">
+                    <button class="back-button" data-target="home"><i class="fas fa-arrow-left"></i></button>
+                    <h2>Saran Produk Go Green</h2>
+                </div>
+                <div id="product-categories-grid" class="product-categories-grid">
+                    </div>
+            </section>
+
+            <section id="product-list-page" class="page">
+                <div class="page-header">
+                    <button class="back-button" data-target="products"><i class="fas fa-arrow-left"></i></button>
+                    <h2 id="product-list-category-title">Produk Kategori: </h2>
+                </div>
+                <div id="product-list-container" class="product-list-container">
+                    </div>
+            </section>
+
+            <section id="product-detail-page" class="page">
+                <div class="page-header">
+                    <button class="back-button" data-target="product-list"><i class="fas fa-arrow-left"></i></button>
+                    <h2>Detail Produk</h2>
+                </div>
+                <div id="product-detail-content" class="product-detail-content">
+                    </div>
+            </section>
+
+            <section id="about-page" class="page">
+                <div class="page-header">
+                    <button class="back-button" data-target="home"><i class="fas fa-arrow-left"></i></button>
+                    <h2>Tentang Aplikasi</h2>
+                </div>
+                <div class="about-content">
+                    <p><strong>EcoSense</strong> adalah aplikasi yang dirancang untuk mendukung gaya hidup berkelanjutan Anda. Kami menyediakan fitur-fitur yang membantu Anda dalam:</p>
+                    <ul>
+                        <li><i class="fas fa-sticky-note"></i> Membuat catatan dan pengingat terkait tujuan keberlanjutan.</li>
+                        <li><i class="fas fa-wallet"></i> Mengelola keuangan dengan mencatat pemasukan dan pengeluaran terkait pilihan produk hijau.</li>
+                        <li><i class="fas fa-leaf"></i> Menemukan rekomendasi produk ramah lingkungan dari berbagai kategori.</li>
+                    </ul>
+                    <p>Misi kami adalah memudahkan setiap individu untuk membuat pilihan yang lebih baik bagi diri sendiri dan planet ini. Mari bersama-sama menciptakan masa depan yang lebih hijau!</p>
+                    <p class="app-version">Versi Aplikasi: 1.0.0</p>
+                    <p class="developed-by">Dikembangkan oleh: Kelompok 10</p>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="service-worker-registration.js"></script>
+</body>
+</html>
