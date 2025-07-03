@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>EcoSense - Aplikasi Gaya Hidup Berkelanjutan</title>
+    <title>Catatan Eco</title>
     <link rel="stylesheet" href="style.css">
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#4CAF50">
-    <link rel="apple-touch-icon" href="icons/icon-192x192.png">
-    <link rel="icon" href="icons/icon-192x192.png" type="image/png">
+    <link rel="apple-touch-icon" href="/icon-192x192.png">
+    <link rel="icon" href="/icon-192x192.png" type="image/png">
     <meta name="mobile-web-app-capable" content="yes">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
@@ -16,14 +16,14 @@
     <div id="app-container">
         <aside id="side-menu">
             <div class="menu-header">
-                <h2>EcoSense</h2>
+                <h2>Catatan Eco</h2>
                 <button id="close-menu" class="menu-toggle"><i class="fas fa-times"></i></button>
             </div>
             <nav>
                 <ul>
                     <li><a href="#" data-page="home"><i class="fas fa-home"></i> Beranda</a></li>
-                    <li><a href="#" data-page="notes"><i class="fas fa-sticky-note"></i> Catatan & Pengingat</a></li>
-                    <li><a href="#" data-page="finance"><i class="fas fa-wallet"></i> Keuangan Berkelanjutan</a></li>
+                    <li><a href="#" data-page="notes"><i class="fas fa-clipboard"></i> Catatan & Pengingat</a></li>
+                    <li><a href="#" data-page="finance"><i class="fas fa-money-bill-wave"></i> Keuangan Berkelanjutan</a></li>
                     <li><a href="#" data-page="products"><i class="fas fa-leaf"></i> Saran Produk Go Green</a></li>
                     <li><a href="#" data-page="about"><i class="fas fa-info-circle"></i> Tentang Aplikasi</a></li>
                 </ul>
@@ -33,85 +33,86 @@
         <main id="app-content">
             <header>
                 <button id="menu-toggle" class="menu-toggle"><i class="fas fa-bars"></i></button>
-                <h1>EcoSense</h1>
+                <h1 id="header-title">Catatan Eco</h1>
             </header>
 
             <section id="home-page" class="page active">
                 <div class="hero-section">
-                    <h2>Mulai Gaya Hidup Hijau Anda!</h2>
-                    <p>EcoSense membantu Anda melacak, belajar, dan berkontribusi pada keberlanjutan setiap hari.</p>
+                    <h2>Selamat Datang di Catatan Eco</h2>
+                    <p>Pendamping gaya hidup berkelanjutan Anda.</p>
                 </div>
+
+                <h2 style="text-align: center; margin-bottom: 25px; color: var(--primary-color); font-size: 1.8em;">Akses Cepat</h2>
                 <div class="quick-access-grid">
                     <div class="quick-access-card" data-page="notes">
-                        <i class="fas fa-sticky-note"></i>
+                        <i class="fas fa-clipboard"></i>
                         <h3>Catatan</h3>
-                        <p>Ide & Pengingat</p>
+                        <p>Ide dan Pengingat Eco Anda</p>
                     </div>
                     <div class="quick-access-card" data-page="finance">
-                        <i class="fas fa-wallet"></i>
+                        <i class="fas fa-money-bill-wave"></i>
                         <h3>Keuangan</h3>
-                        <p>Catat Pengeluaran Hijau</p>
+                        <p>Kelola Pengeluaran Ramah Lingkungan</p>
                     </div>
                     <div class="quick-access-card" data-page="products">
                         <i class="fas fa-leaf"></i>
                         <h3>Produk</h3>
-                        <p>Saran Go Green</p>
+                        <p>Saran Produk Go Green</p>
+                    </div>
+                    <div class="quick-access-card" data-page="about">
+                        <i class="fas fa-info-circle"></i>
+                        <h3>Tentang</h3>
+                        <p>Informasi Aplikasi</p>
                     </div>
                 </div>
 
-                 <section class="home-categories">
-                    <h2>Jelajahi Produk Go Green</h2>
-                    <div class="product-categories-home-grid">
-                        <div class="category-card" data-category="Dapur">
+                <div class="home-categories">
+                    <h2 style="text-align: center; margin-bottom: 25px; color: var(--primary-color); font-size: 1.8em;">Jelajahi Produk Go Green</h2>
+                    <div class="product-categories-home-grid quick-access-grid">
+                        <div class="category-card" data-category="Peralatan Dapur Go Green">
                             <i class="fas fa-utensils"></i>
                             <h3>Dapur</h3>
                         </div>
-                        <div class="category-card" data-category="Perawatan Diri">
+                        <div class="category-card" data-category="Peralatan Diri & Perawatan">
                             <i class="fas fa-spa"></i>
                             <h3>Perawatan Diri</h3>
                         </div>
-                        <div class="category-card" data-category="Pakaian">
-                            <i class="fas fa-tshirt"></i>
-                            <h3>Pakaian</h3>
+                        <div class="category-card" data-category="Produk Rumah Tangga">
+                            <i class="fas fa-home"></i>
+                            <h3>Rumah Tangga</h3>
                         </div>
-                        <div class="category-card" data-category="Kemasan">
-                            <i class="fas fa-box"></i>
-                            <h3>Kemasan</h3>
-                        </div>
-                        <div class="category-card" data-category="Pertanian & Kebun">
-                            <i class="fas fa-seedling"></i>
-                            <h3>Pertanian & Kebun</h3>
+                        <div class="category-card" data-category="Produk Berkelanjutan Lainnya">
+                            <i class="fas fa-leaf"></i>
+                            <h3>Lainnya</h3>
                         </div>
                     </div>
-                </section>
+                </div>
             </section>
 
             <section id="notes-page" class="page">
                 <div class="page-header">
-                    <button class="back-button" data-target="home"><i class="fas fa-arrow-left"></i></button>
                     <h2>Catatan & Pengingat</h2>
                 </div>
                 <div class="note-input-section">
-                    <textarea id="note-text" placeholder="Tulis catatan atau pengingat baru..."></textarea>
-                    <button id="add-note-button"><i class="fas fa-plus-circle"></i> Tambah Catatan</button>
+                    <textarea id="note-text" placeholder="Tulis catatan atau pengingat eco Anda di sini..."></textarea>
+                    <button id="add-note-button"><i class="fas fa-plus"></i> Tambah Catatan</button>
                 </div>
 
                 <div class="notes-list-section">
                     <h3>Catatan Disematkan</h3>
                     <div id="pinned-notes-container" class="notes-container">
-                        <p id="empty-pinned-notes-message" class="empty-message">Belum ada catatan yang disematkan.</p>
+                        <p id="empty-pinned-notes-message" class="empty-message" style="display: none;">Belum ada catatan yang disematkan.</p>
                     </div>
 
                     <h3>Catatan Lainnya</h3>
                     <div id="other-notes-container" class="notes-container">
-                        <p id="empty-other-notes-message" class="empty-message">Belum ada catatan lainnya.</p>
+                        <p id="empty-other-notes-message" class="empty-message" style="display: none;">Belum ada catatan lainnya.</p>
                     </div>
                 </div>
             </section>
 
             <section id="finance-page" class="page">
                 <div class="page-header">
-                    <button class="back-button" data-target="home"><i class="fas fa-arrow-left"></i></button>
                     <h2>Keuangan Berkelanjutan</h2>
                 </div>
                 <div class="finance-summary">
@@ -130,18 +131,17 @@
                 </div>
 
                 <div class="transaction-input-section">
-                    <h3>Tambah Transaksi Baru</h3>
-                    <input type="text" id="transaction-description" placeholder="Deskripsi (ex: Beli Sabun Organik)">
-                    <input type="number" id="transaction-amount" placeholder="Jumlah (ex: 50000)">
+                    <input type="text" id="transaction-description" placeholder="Deskripsi transaksi (mis: Beli sabun refill)">
+                    <input type="number" id="transaction-amount" placeholder="Jumlah (contoh: 50000)">
                     <select id="transaction-type">
                         <option value="income">Pemasukan</option>
                         <option value="expense">Pengeluaran</option>
                     </select>
-                    <button id="add-transaction-button"><i class="fas fa-plus-circle"></i> Tambah Transaksi</button>
+                    <button id="add-transaction-button"><i class="fas fa-wallet"></i> Tambah Transaksi</button>
                 </div>
 
                 <div class="transaction-list-section">
-                    <h3>Riwayat Transaksi</h3>
+                    <h3>Daftar Transaksi</h3>
                     <ul id="transaction-list">
                         </ul>
                 </div>
@@ -149,8 +149,7 @@
 
             <section id="products-page" class="page">
                 <div class="page-header">
-                    <button class="back-button" data-target="home"><i class="fas fa-arrow-left"></i></button>
-                    <h2>Saran Produk Go Green</h2>
+                    <h2>Kategori Produk Go Green</h2>
                 </div>
                 <div id="product-categories-grid" class="product-categories-grid">
                     </div>
@@ -159,9 +158,9 @@
             <section id="product-list-page" class="page">
                 <div class="page-header">
                     <button class="back-button" data-target="products"><i class="fas fa-arrow-left"></i></button>
-                    <h2 id="product-list-category-title">Produk Kategori: </h2>
+                    <h2 id="product-list-category-title">Produk Kategori:</h2>
                 </div>
-                <div id="product-list-container" class="product-list-container">
+                <div id="product-list-container" class="quick-access-grid">
                     </div>
             </section>
 
@@ -176,22 +175,21 @@
 
             <section id="about-page" class="page">
                 <div class="page-header">
-                    <button class="back-button" data-target="home"><i class="fas fa-arrow-left"></i></button>
                     <h2>Tentang Aplikasi</h2>
                 </div>
                 <div class="about-content">
-                    <p><strong>EcoSense</strong> adalah aplikasi yang dirancang untuk mendukung gaya hidup berkelanjutan Anda. Kami menyediakan fitur-fitur yang membantu Anda dalam:</p>
+                    <p><strong>Catatan Eco</strong> adalah aplikasi sederhana yang dirancang untuk membantu Anda mengintegrasikan prinsip-prinsip keberlanjutan dalam kehidupan sehari-hari.</p>
+                    <p>Fitur-fitur yang tersedia:</p>
                     <ul>
-                        <li><i class="fas fa-sticky-note"></i> Membuat catatan dan pengingat terkait tujuan keberlanjutan.</li>
-                        <li><i class="fas fa-wallet"></i> Mengelola keuangan dengan mencatat pemasukan dan pengeluaran terkait pilihan produk hijau.</li>
-                        <li><i class="fas fa-leaf"></i> Menemukan rekomendasi produk ramah lingkungan dari berbagai kategori.</li>
+                        <li><i class="fas fa-clipboard"></i> Mencatat ide dan pengingat tentang gaya hidup ramah lingkungan.</li>
+                        <li><i class="fas fa-money-bill-wave"></i> Mengelola keuangan dengan mencatat pemasukan dan pengeluaran terkait upaya berkelanjutan Anda.</li>
+                        <li><i class="fas fa-leaf"></i> Menemukan saran produk go green di berbagai kategori, lengkap dengan detail dan link pembelian.</li>
                     </ul>
-                    <p>Misi kami adalah memudahkan setiap individu untuk membuat pilihan yang lebih baik bagi diri sendiri dan planet ini. Mari bersama-sama menciptakan masa depan yang lebih hijau!</p>
-                    <p class="app-version">Versi Aplikasi: 1.0.0</p>
-                    <p class="developed-by">Dikembangkan oleh: Kelompok 10</p>
+                    <p>Semoga aplikasi ini dapat menjadi teman setia Anda dalam perjalanan menuju gaya hidup yang lebih hijau dan bertanggung jawab!</p>
+                    <p class="developed-by">Dibuat dengan semangat keberlanjutan.</p>
+                    <p class="app-version">Versi 1.0.0</p>
                 </div>
             </section>
-
         </main>
     </div>
 
